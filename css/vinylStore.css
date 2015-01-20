@@ -13,3 +13,31 @@
 	margin-left: 170px;
 
 }
+
+.profile-section {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 80px;
+}
+
+.profile-info-section {
+	float:right;
+    width:300px;
+    height: 200px;
+}
+
+.profile-history-section {
+	margin-right: 320px;
+}
+
+.profile-history-section-left {
+	float:left;
+	width: 50%;
+    padding-right: 10px;
+}
+
+.profile-history-section-right {
+	float:right;
+	width: 50%;
+    padding-left: 10px;
+}
