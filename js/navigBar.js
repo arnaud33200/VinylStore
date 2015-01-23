@@ -4,9 +4,9 @@ window.onload = function() {
 
 function loadHeader() {
     document.getElementById('navigationBar').innerHTML = "<div class=\"container-fluid\">\
-            <a class=\"navbar-brand\" href=\"index.html\">\
-                <img alt=\"Brand\" src=\"logo.png\">\
-            </a>\
+            <a class=\"navbar-brand\" href=\"index.html\"><img src=\"logo.png\" style=\"position: fixed; top: 5px; left: 10px;\"></a>\
+            <a class=\"navbar-brand\" href=\"index.html\" style=\"width: 180px\">\
+                  </a>\
             <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\
                 <ul class=\"nav navbar-nav\">\
                     <li class=\"dropdown\">\
@@ -42,12 +42,12 @@ function loadHeader() {
                 <ul class=\"nav navbar-nav navbar-right\">\
                     <li class=\"dropdown\">\
                         <a href=\"profile.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">\
-                        <span class=\"glyphicon glyphicon-shopping-cart\"</span></a>\
+                        <span class=\"glyphicon glyphicon-shopping-cart\"</span> Basket</a>\
                         <ul class=\"dropdown-menu\" role=\"menu\">\
                             <li><a href=\"#\">Checkout Order</a></li>\
                         </ul>\
                     </li>\
-                    <li><a href=\"profile.html\"><span class=\"glyphicon glyphicon-user\"</span></a></li>\
+                    <li><a href=\"profile.html\"><span class=\"glyphicon glyphicon-user\"</span> Profile</a></li>\
 \
                 </ul>\
 \
