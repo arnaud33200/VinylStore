@@ -43,7 +43,7 @@ function loadHeader() {
                     <li class=\"dropdown\">\
                         <a href=\"profile.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">\
                         <span class=\"glyphicon glyphicon-shopping-cart\"</span></a>\
-                        <ul class=\"dropdown-menu\" role=\"menu\">\
+                        <ul class=\"dropdown-menu\" role=\"menu\" id=\"cart_item_list\">\
                             <li><a href=\"#\">Checkout Order</a></li>\
                         </ul>\
                     </li>\
