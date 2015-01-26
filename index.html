@@ -3,11 +3,38 @@
 
 <script type="text/javascript">
 
-function testJs(artist, title, image) {
+function changeCartColor(){
+  document.getElementById('cart_icon').style.cssText = 'color: red;';
+  document.getElementById('cart_item_number').style.cssText = 'background: red; color: white;';
+}
+
+function resetCartColor(){
+  document.getElementById('cart_icon').style.cssText = 'color: gray;';
+  document.getElementById('cart_item_number').style.cssText = 'background: gray; color: white;';
+}
+
+function removeItemFromCart(albumID){
+  var myList = document.getElementById(albumID);
+  //myList.innerHTML = '';
+  $('#'+albumID).remove();
+  var cartItemNumber = document.getElementById('cart_item_number');
+  var itemNumber = cartItemNumber.innerHTML;
+  cartItemNumber.innerHTML = parseInt(itemNumber)-1;
+}
+
+function addItemToCart(artist, title, image) {
 
   var cartList = document.getElementById('cart_item_list');
-  cartList.innerHTML +='<li class="media"><div class="media-left"><a href="#"><img class="media-object" src='+image+'alt="album0" style="width:50px; height:50px;"></a></div><div class="media-body"><h4 class="media-heading">'+artist+'</h4>'+title+'</div><div class="media-right"><h4 class="media-heading">10$</h4><button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div></li>';
-  //alert(image);
+  var count = $("#cart_item_list li").length;
+  var albumid = "albumList"+count;
+
+  cartList.innerHTML +='<li id=\''+albumid+'\' class="media"><div class="media-left"><a href="#"><img class="media-object" src=\''+image+'\'alt="album0" style="width:50px; height:50px;"></a></div><div class="media-body"><h4 class="media-heading">'+artist+'</h4>'+title+'</div><div class="media-right"><h4 class="media-heading">10$</h4><button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="removeItemFromCart(\''+albumid +'\');"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div></li>';
+
+  var cartItemNumber = document.getElementById('cart_item_number');
+  var itemNumber = cartItemNumber.innerHTML;
+  cartItemNumber.innerHTML = parseInt(itemNumber)+1;
+  changeCartColor();
+  setTimeout(resetCartColor,1000);
 }
 
 </script>
@@ -80,7 +107,7 @@ function testJs(artist, title, image) {
          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="testJs(getElementById('album0_artist').innerHTML,getElementById('album0_title').innerHTML,getElementById('album0_image').src)">
+         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album0_artist').innerHTML,getElementById('album0_title').innerHTML,getElementById('album0_image').src)">
           10$
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         </button>
@@ -104,7 +131,7 @@ function testJs(artist, title, image) {
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="testJs(getElementById('album1_artist').innerHTML,getElementById('album1_title').innerHTML,getElementById('album1_image').src)">
+         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album1_artist').innerHTML,getElementById('album1_title').innerHTML,getElementById('album1_image').src)">
           10$
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         </button>
@@ -128,7 +155,7 @@ function testJs(artist, title, image) {
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="testJs(getElementById('album2_artist').innerHTML,getElementById('album2_title').innerHTML,getElementById('album2_image').src)">
+         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album2_artist').innerHTML,getElementById('album2_title').innerHTML,getElementById('album2_image').src)">
           10$
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         </button>
@@ -152,7 +179,7 @@ function testJs(artist, title, image) {
          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="testJs(getElementById('album3_artist').innerHTML,getElementById('album3_title').innerHTML,getElementById('album3_image').src)">
+         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album3_artist').innerHTML,getElementById('album3_title').innerHTML,getElementById('album3_image').src)">
           10$
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         </button>
@@ -176,7 +203,7 @@ function testJs(artist, title, image) {
          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="testJs(getElementById('album4_artist').innerHTML,getElementById('album4_title').innerHTML,getElementById('album4_image').src)">
+         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album4_artist').innerHTML,getElementById('album4_title').innerHTML,getElementById('album4_image').src)">
           10$
           <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         </button>
