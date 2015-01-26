@@ -47,3 +47,13 @@
 .button_cart {
 	float:right;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    background-color: gray;
+    color: white;
+}
+
+    .nav-pills > li > a{
+    color: gray;
+    font-family: 'Oswald', sans-serif;
+}
