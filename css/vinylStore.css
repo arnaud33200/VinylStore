@@ -28,6 +28,7 @@
 
 .profile-history-section {
 	margin-right: 320px;
+
 }
 
 .profile-history-section-left {
@@ -40,6 +41,7 @@
 	float:right;
 	width: 50%;
     padding-left: 10px;
+    overflow-y: auto;
 }
 
 .button_cart {
