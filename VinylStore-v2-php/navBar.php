@@ -39,7 +39,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-shopping-cart"</span> Basket</a>
+                        <span class="badge" id="cart_item_number">0</span>
+                        <span class="glyphicon glyphicon-shopping-cart" id="cart_icon"</span></a>
                             <ul class="dropdown-menu" role="menu" id="cart_item_list">
                                 <li><a href="#">Checkout Order</a></li>
                             </ul>
