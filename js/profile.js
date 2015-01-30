@@ -1,6 +1,3 @@
-window.onload = function() {
-	loadPesonalInformation("mimi62500@free.fr", "5 avenue Patis", 62500, "Cognac");
-};
 
 function loadPesonalInformation(mail, adress, code, ville) {
 	var d = document.getElementById("personalInformation");
