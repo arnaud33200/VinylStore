@@ -40,8 +40,9 @@
 
 
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#">Order History</a></li>
+					<li role="presentation" class="active"><a>Order History <span class="badge">50 <span class="glyphicon glyphicon-cd"/></span></a></li>
 
+					<?php include '/profile/profileOrderHistory.php';?>
 					<?php include '/profile/profileOrderHistory.php';?>
 
 				</ul>
@@ -52,7 +53,7 @@
 
 			<div class="profile-history-section-right">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#">Last Comments & notes</a></li>
+					<li role="presentation" class="active"><a href="#">Last Comments <span class="badge">26 <span class="glyphicon glyphicon-comment"/></span></a></li>
 					
 					<?php include '/profile/profileCommentHistory.php';?>
 
