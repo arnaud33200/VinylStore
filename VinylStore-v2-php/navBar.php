@@ -1,9 +1,9 @@
 <?php   
     session_start();
     if( !isset($_SESSION['LOGIN_USER']) )
-        $conn = false;
+        $connected = false;
     else
-        $conn = true;
+        $connected = true;
 ?>
 
  <nav class="navbar navbar-default navbar-fixed-top" id="navigationBar">
@@ -47,7 +47,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <?php
-                    if( $conn )
+                    if( $connected )
                     {
                         echo '<li class="dropdown"><a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="badge" id="cart_item_number">0</span>
