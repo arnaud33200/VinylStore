@@ -11,7 +11,6 @@
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-
 	$sql = "SELECT login, firstname, lastname, mail, adress, zipcode, city FROM profile WHERE idprofile = 1";
 	$result = $conn->query($sql);
 
@@ -26,7 +25,9 @@
 			$city = $row["city"];
 	}
 	$conn->close();
-?>
+?>	
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <ul class="nav nav-pills nav-stacked">
 	<li role="presentation"><a href="#"><img src="pic.jpg"/></a></li>
