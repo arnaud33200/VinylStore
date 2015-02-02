@@ -61,10 +61,10 @@ function addItemToCart(artist, title, image) {
 
 <body>
 
-<?php include 'navBar.php';?>
+  <?php include 'navBar.php';?>
 
 
-   <div class="content-section">
+  <div class="content-section">
 
     <div class="left-section">
 
@@ -90,127 +90,71 @@ function addItemToCart(artist, title, image) {
 
    <div class="row">
 
-    <div class="col-sm-6 col-md-4" style="width:300px; height:500px;">
-      <div class="thumbnail">
-       <a href="#" class="thumbnail">
-        <img id="album0_image" src="http://2.bp.blogspot.com/-bTU5SQCa5RY/Tym-qt1W9NI/AAAAAAAAANo/nWcGHN0c9NY/s1600/Indie+album+covers.jpg" alt="album0">
-      </a>
-      <div class="caption">
-        <h4 id="album0_artist">Foals</h4>
-        <h5 id="album0_title">Antidote</h5>
-        <p>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album0_artist').innerHTML,getElementById('album0_title').innerHTML,getElementById('album0_image').src)">
-          10$
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "VinylStore";
+
+// Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM `vinyle`";
+    $result = $conn->query($sql);
+    $albumNumber = 0;
+
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+        $albumImageId = "album".$albumNumber."_image";
+        $albumArtistId = "album".$albumNumber."_artist";
+        $albumTitleId = "album".$albumNumber."_title";
+        $album = "<div class=\"col-sm-6 col-md-4\" style=\"width:300px; height:500px;\">
+        <div class=\"thumbnail\">
+        <a href=\"#\" class=\"thumbnail\">
+        <img id=".$albumImageId." src=".$row["Pochette"]." alt=\"album0\">
+        </a>
+        <div class=\"caption\">
+        <h4 id=".$albumArtistId.">".$row["Artiste"]."</h4>
+        <h5 id=".$albumTitleId.">".$row["Titre"]."</h5>
+        <p>";
+
+
+        $i = 1;
+        for ($i; $i <= $row["Note"]; $i++) {
+          $album = $album . "<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>";
+        }
+
+        for ($i; $i <= 5; $i++) {
+          $album = $album . "<span class=\"glyphicon glyphicon-star-empty\" aria-hidden=\"true\"></span>";
+        }
+
+
+
+        $album = $album . "<button class=\"button_cart\" type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\" onclick=\"addItemToCart(getElementById('{$albumArtistId}').innerHTML,getElementById('{$albumTitleId}').innerHTML,getElementById('{$albumImageId}').src)\">
+        10$
+        <span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"></span>
         </button>
-      </p>
-    </div>
+        </p>
+        </div>
+        </div>
+        </div>";
+
+        echo "".$album;
+
+        $albumNumber = $albumNumber + 1;
+      }
+    } else {
+      echo "0 results";
+    }
+    $conn->close();
+    ?> 
+
   </div>
-</div>
-
-<div class="col-sm-6 col-md-4" style="width:300px; height:500px;">
-      <div class="thumbnail">
-       <a href="#" class="thumbnail">
-        <img id="album1_image" src="http://nme.assets.ipccdn.co.uk/images/gallery/FoalsTapes600Gb.jpg" alt="album1">
-      </a>
-      <div class="caption">
-        <h4 id="album1_artist">Foals</h4>
-        <h5 id="album1_title">Tales</h5>
-        <p>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album1_artist').innerHTML,getElementById('album1_title').innerHTML,getElementById('album1_image').src)">
-          10$
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4" style="width:300px; height:500px;">
-      <div class="thumbnail">
-       <a href="#" class="thumbnail">
-        <img id="album2_image" src="http://payload117.cargocollective.com/1/0/5464/4640626/FOALS-MYNUMBER-LEIFPODHAJSKY-34_800.jpg" alt="album2">
-      </a>
-      <div class="caption">
-        <h4 id="album2_artist">Foals</h4>
-        <h5 id="album2_title">My Number</h5>
-        <p>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album2_artist').innerHTML,getElementById('album2_title').innerHTML,getElementById('album2_image').src)">
-          10$
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4" style="width:300px; height:500px;">
-      <div class="thumbnail">
-       <a href="#" class="thumbnail">
-        <img id="album3_image" src="http://andrewmcmillen.com/wp-content/uploads/2010/05/foals_album_cover.jpg" alt="album3">
-      </a>
-      <div class="caption">
-        <h4 id="album3_artist">Foals</h4>
-        <h5 id="album3_title">Total Life Forever</h5>
-        <p>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album3_artist').innerHTML,getElementById('album3_title').innerHTML,getElementById('album3_image').src)">
-          10$
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6 col-md-4" style="width:300px; height:500px;">
-      <div class="thumbnail">
-       <a href="#" class="thumbnail">
-        <img id="album4_image" src="http://upload.wikimedia.org/wikipedia/en/3/32/Holy_Fire_II.jpg" alt="album4">
-      </a>
-      <div class="caption">
-        <h4 id="album4_artist">Foals</h4>
-        <h5 id="album4_title">Holy Fire</h5>
-        <p>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-         <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-
-         <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="addItemToCart(getElementById('album4_artist').innerHTML,getElementById('album4_title').innerHTML,getElementById('album4_image').src)">
-          10$
-          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-
-</div>
 
 </div>
 
