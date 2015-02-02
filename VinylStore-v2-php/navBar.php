@@ -1,3 +1,11 @@
+<?php   
+    session_start();
+    if( !isset($_SESSION['LOGIN_USER']) )
+        $connected = false;
+    else
+        $connected = true;
+?>
+
  <nav class="navbar navbar-default navbar-fixed-top" id="navigationBar">
 
     <div class="container-fluid">
@@ -37,17 +45,32 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="badge" id="cart_item_number">0</span>
-                        <span class="glyphicon glyphicon-shopping-cart" id="cart_icon"</span></a>
-                            <ul class="dropdown-menu" role="menu" id="cart_item_list">
-                                <li><a href="#">Checkout Order</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="profile.php"><span class="glyphicon glyphicon-user"</span> Profile</a></li>
 
-                    </ul>
+                <?php
+                    if( $connected )
+                    {
+                        echo '<li class="dropdown"><a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="badge" id="cart_item_number">0</span>
+                            <span class="glyphicon glyphicon-shopping-cart" id="cart_icon"</span></a>
+                                <ul class="dropdown-menu" role="menu" id="cart_item_list">
+                                    <li><a href="#">Checkout Order</a></li>
+                                </ul></li>
+
+                        <li class="dropdown"><a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"</span> Profile</a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="profile.php">View profile</a></li>
+                                    <li><a href="sessionManagement/logoff.php">Log off</a></li>
+                                </ul></li>';
+                    }
+                    else
+                    {
+                         echo '<li><a href="sessionManagement/login.php"><span class="glyphicon glyphicon-user"</span> Log-in</a></li>
+                        <li><a href="sessionManagement/create.php"><span class="glyphicon glyphicon-plus"</span> Create</a></li>';
+                    }
+                ?>
+
+         </ul>
 
                 </div>
             </nav>

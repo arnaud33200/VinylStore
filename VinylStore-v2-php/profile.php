@@ -31,109 +31,37 @@
 
 		<div class="profile-info-section">
 
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation"><a href="#"><img src="pic.jpg"/></a></li>
+			<?php include 'profile/profileInformation.php';?>
+		</div>
 
-				<li role="presentation"><a href="#">
-					<h3>mimi62</h3>
-					<h5>Michel</br>TABERLANT</h5>
+		<div class="profile-history-section">
+
+			<div class="profile-history-section-left">
+
+
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href="#">Order History</a></li>
+
+					<?php include '/profile/profileOrderHistory.php';?>
+
+				</ul>
+
+			</div>
+
+
+
+			<div class="profile-history-section-right">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href="#">Last Comments & notes</a></li>
 					
-				</a></li>
+					<?php include '/profile/profileCommentHistory.php';?>
 
-				<li role="presentation"><a id="personalInformation" onclick="loadFormulaire()">
-					<h4>
-						Mail: <mail>mimi62500@free.fr</mail></br>
-						Adress: <adresse>5 avenue Patis</adresse><br>
-						Code: <codep>62500</codep><br>
-						Ville: <ville>Cognac</ville>
-				</h4>
-				</a></li>
-		</ul>
-	</div>
+				</ul>
 
-	<div class="profile-history-section">
-
-		<div class="profile-history-section-left">
-
-
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" class="active"><a href="#">Order History</a></li>
-				<li role="presentation"><a href="#"><div class="panel panel-info">
-  					<div class="panel-heading">15/03/2014</div>
-  					<div class="panel-body">
-    				<div class="row">
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									...
-								</div>
-					  </div>
-					</div></a></li>
-
-					<li role="presentation"><a href="#"><div class="panel panel-info">
-  					<div class="panel-heading">15/03/2014</div>
-  					<div class="panel-body">
-    				<div class="row">
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									...
-								</div>
-					  </div>
-					</div></a></li>
-
-					<li role="presentation"><a href="#"><div class="panel panel-info">
-  					<div class="panel-heading">15/03/2014</div>
-  					<div class="panel-body">
-    				<div class="row">
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									...
-								</div>
-					  </div>
-					</div></a></li>
-
-					<li role="presentation"><a href="#"><div class="panel panel-info">
-  					<div class="panel-heading">15/03/2014</div>
-  					<div class="panel-body">
-    				<div class="row">
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									...
-								</div>
-					  </div>
-					</div></a></li>
-
-					<li role="presentation"><a href="#"><div class="panel panel-info">
-  					<div class="panel-heading">15/03/2014</div>
-  					<div class="panel-body">
-    				<div class="row">
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-									...
-								</div>
-					  </div>
-					</div></a></li>
-			</ul>
-
+			</div>
 		</div>
 
-
-
-		<div class="profile-history-section-right">
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" class="active"><a href="#">Last Comments & notes</a></li>
-				<li role="presentation"><a href="#">Profile</a></li>
-				<li role="presentation"><a href="#">Messages</a></li>
-			</ul>
-
-		</div>
 	</div>
-
-</div>
 
 </body>
 
