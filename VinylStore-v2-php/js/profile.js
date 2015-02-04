@@ -55,7 +55,7 @@ function saveChange() {
 
 	//d.attachEvent("onlick", loadFormulaire());
 
-	if (mail == "") {
+	/*if (mail == "") {
 		spanMail.style.backgroundColor="#ea5959";
 		return;
 	}
@@ -70,14 +70,14 @@ function saveChange() {
 	if (ville == "") {
 		spanVille.style.backgroundColor="#ea5959";
 		return;
-	}
+	}*/
 
-	loadPesonalInformation(mail, adresse, codep, ville);
+	ajaxRecordDB(mail, adresse, codep, ville);
 	//d.bind( "click", loadFormulaire	 );
 }
 
-function PostData() {
-    // 1. Create XHR instance - Start
+function ajaxRecordDB(mail, adresse, codep, ville) {
+
     var xhr;
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();
@@ -88,19 +88,43 @@ function PostData() {
     else {
         throw new Error("Ajax is not supported by this browser");
     }
-    // 1. Create XHR instance - End
     
-    // 2. Define what to do when XHR feed you the response from the server - Start
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status == 200 && xhr.status < 300) {
-                document.getElementById('div1').innerHTML = xhr.responseText;
+            	var obj = JSON.parse(xhr.responseText);
+                //document.getElementById('divConsole').innerHTML = xhr.responseText;
+                if (obj.error == 0) {
+                	loadPesonalInformation(mail, adresse, codep, ville);
+                } else {
+                	setInputTextError(obj);
+                }
             }
         }
     }
 
-    // 3. Specify your action, location and Send to the server - Start 
-    xhr.open('POST', 'verify.php');
+    xhr.open('POST', 'profile/SaveProfileInformation.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("userid=" + userid);
+	var d = "mail="+mail+"&adresse="+adresse+"&codep="+codep+"&ville="+ville;  
+	xhr.send(d);
+}
+
+function setInputTextError(obj) {
+	var spanMail = document.getElementsByTagName("mail")[0].previousElementSibling;
+	var spanAdresse = document.getElementsByTagName("adresse")[0].previousElementSibling;
+	var spanCodep = document.getElementsByTagName("codep")[0].previousElementSibling;
+	var spanVille = document.getElementsByTagName("ville")[0].previousElementSibling;
+
+	if (obj.mail == 1) {
+		spanMail.style.backgroundColor="#ea5959";
+	}
+	if (obj.adresse == 1) {
+		spanAdresse.style.backgroundColor="#ea5959";
+	}
+	if (obj.codep == 1) {
+		spanCodep.style.backgroundColor="#ea5959";
+	}
+	if (obj.ville == 1) {
+		spanVille.style.backgroundColor="#ea5959";
+	}
 }

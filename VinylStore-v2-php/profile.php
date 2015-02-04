@@ -38,7 +38,6 @@
 
 			<div class="profile-history-section-left">
 
-
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation" class="active"><a>Order History <span class="badge">50 <span class="glyphicon glyphicon-cd"/></span></a></li>
 
@@ -46,10 +45,7 @@
 					<?php include '/profile/profileOrderHistory.php';?>
 
 				</ul>
-
 			</div>
-
-
 
 			<div class="profile-history-section-right">
 				<ul class="nav nav-pills nav-stacked">

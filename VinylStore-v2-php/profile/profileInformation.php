@@ -29,14 +29,16 @@
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+<div id="divConsole"></div>
+
 <ul class="nav nav-pills nav-stacked">
-	<li role="presentation"><a href="#"><img src="pic.jpg"/></a></li>
 
-	<li role="presentation"><a href="#">
+	<li role="presentation"><a>
 		<h3><?php echo $login ?></h3>
-		<h5><?php echo $firstname ?></br><?php echo $lastname ?></h5>
-
+		<i><h4><?php echo $firstname ?> <?php echo $lastname ?></h4></i>
 	</a></li>
+
+	<li role="presentation"><a href="#"><img src="pic.jpg"/></a></li>
 
 	<li role="presentation"><a id="personalInformation" onclick="loadFormulaire()">
 		<h4>
