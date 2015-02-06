@@ -44,6 +44,11 @@
 	margin-top:20px;
 }
 
+.table .cover {
+	height:100px;
+	width:100px;
+}
+
 .profile-history-section-right {
 	float:right;
 	width: 50%;

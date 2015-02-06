@@ -32,7 +32,7 @@
 			<?php include 'basket/basketInformation.php';?>
 		</div>
 
-		<div class="profile-history-section">
+		<div class="profile-history-section" style="margin-right:400px;">
 
 			<?php include 'basket/basketHistory.php';?>
 			
