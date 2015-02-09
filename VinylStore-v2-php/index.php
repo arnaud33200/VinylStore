@@ -15,17 +15,17 @@ function resetCartColor(){
 
 function removeItemFromCart(albumID){
   var myList = document.getElementById(albumID);
-  //myList.innerHTML = '';
   $('#'+albumID).remove();
   var cartItemNumber = document.getElementById('cart_item_number');
   var itemNumber = cartItemNumber.innerHTML;
   cartItemNumber.innerHTML = parseInt(itemNumber)-1;
 }
 
-function addItemToCart(artist, title, image) {
-    var cartList = document.getElementById('cart_item_list');
+function addItemToCart(artist, title, image, note, prix) {
+  var cartList = document.getElementById('cart_item_list');
   var count = $("#cart_item_list li").length;
   var albumid = "albumList"+count;
+  var price = prix+"$"
 
   cartList.innerHTML +='<li id=\''+albumid+'\' class="media">\
   <div class="media-left">\
@@ -38,7 +38,7 @@ function addItemToCart(artist, title, image) {
   </div>\
   <div class="media-right">\
   <h4 class="media-heading">\
-  10$\
+  '+price+'\
   </h4>\
   <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="removeItemFromCart(\''+albumid +'\');">\
   <span class="glyphicon glyphicon-remove" aria-hidden="true">\
@@ -140,7 +140,8 @@ function addItemToCart(artist, title, image) {
         <h5 id=".$albumTitleId.">".$row["Titre"]."</h5>
         <p>";
 
-
+        $albumNote = $row["Note"];
+        $albumPrix = $row["Prix"];
         $i = 1;
         for ($i; $i <= $row["Note"]; $i++) {
           $album = $album . "<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>";
@@ -150,7 +151,7 @@ function addItemToCart(artist, title, image) {
           $album = $album . "<span class=\"glyphicon glyphicon-star-empty\" aria-hidden=\"true\"></span>";
         }
 
-        $album = $album . "<button class=\"button_cart\" type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\" onclick=\"addItemToCart(getElementById('{$albumArtistId}').innerHTML,getElementById('{$albumTitleId}').innerHTML,getElementById('{$albumImageId}').src)\">
+        $album = $album . "<button class=\"button_cart\" type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\" onclick=\"addItemToCart(getElementById('{$albumArtistId}').innerHTML,getElementById('{$albumTitleId}').innerHTML,getElementById('{$albumImageId}').src,$albumNote,$albumPrix)\">
         ".$row["Prix"]."$
         <span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"></span>
         </button>
