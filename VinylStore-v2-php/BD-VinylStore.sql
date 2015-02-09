@@ -11,9 +11,10 @@ CREATE TABLE IF NOT EXISTS `profile` (
   PRIMARY KEY (`idProfile`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
 INSERT INTO `profile` (`login`, `password`, `firstName`, `lastName`, `mail`, `adress`, `zipCode`, `city`) VALUES
 ('mimi62', '123456', 'Michel', 'Tabrestin', 'mimi62400@gmail.com', '6 avenu du jaune', 62100, 'Calais');
+
+-- ----------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `vinyle` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,

@@ -37,6 +37,18 @@
     padding-right: 10px;
 }
 
+.profile-history-section-left .cover {
+	height:100px;
+	width:100px;
+	margin-right:20px;
+	margin-top:20px;
+}
+
+.table .cover {
+	height:100px;
+	width:100px;
+}
+
 .profile-history-section-right {
 	float:right;
 	width: 50%;
@@ -57,3 +69,5 @@
     color: gray;
     font-family: 'Oswald', sans-serif;
 }
+
+

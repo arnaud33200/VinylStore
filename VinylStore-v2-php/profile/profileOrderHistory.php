@@ -1,11 +1,11 @@
-<li role="presentation"><a href="#"><div class="panel panel-info">
-	<div class="panel-heading">15/03/2014</div>
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-			<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-			<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="cover.jpg" alt="..."></a></div>
-			...
-		</div>
-	</div>
-</div></a></li>
+<?php
+for ($i=0; $i<3; $i++) {
+	$n = rand(2,6);
+	echo '<li role="presentation"><a href="#' . $i . '"><h4><span class="badge">' . $n . '</span> 15/03/2014</h4>'; //
+	for ($k=0; $k<$n; $k++) {
+		$v = rand(1,12);
+		echo '<img class="cover" src="VinylCover/v' . $v . '.jpg">';
+	}
+	echo '</a></li>';
+}
+?>
