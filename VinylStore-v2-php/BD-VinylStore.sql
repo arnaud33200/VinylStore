@@ -27,9 +27,13 @@ CREATE TABLE IF NOT EXISTS `vinyle` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 INSERT INTO `vinyle` (`Id`, `Titre`, `Artiste`, `Prix`, `Pochette`, `Note`) VALUES
-(1, 'Holy Fire', 'Foals', 20, 'http://upload.wikimedia.org/wikipedia/en/3/32/Holy_Fire_II.jpg', 3),
-(2, 'Total Life Forever', 'Foals', 20, 'http://andrewmcmillen.com/wp-content/uploads/2010/05/foals_album_cover.jpg', 4),
-(3, 'Antidotes', 'Foals', 20, 'http://2.bp.blogspot.com/-bTU5SQCa5RY/Tym-qt1W9NI/AAAAAAAAANo/nWcGHN0c9NY/s1600/Indie+album+covers.jpg', 5),
-(4, 'My Number', 'Foals', 10, 'http://payload117.cargocollective.com/1/0/5464/4640626/FOALS-MYNUMBER-LEIFPODHAJSKY-34_800.jpg', 2),
-(5, 'Tales', 'Foals', 15, 'http://nme.assets.ipccdn.co.uk/images/gallery/FoalsTapes600Gb.jpg', 3);
-
+(1, 'Holy Fire', 'Foals', 20, 'vinylCover/v6.jpg', 3),
+(2, 'Total Life Forever', 'Foals', 20, 'vinylCover/v15.jpg', 4),
+(3, 'Antidotes', 'Foals', 20, 'vinylCover/v8.jpg', 5),
+(4, 'My Number', 'Foals', 10, 'vinylCover/v13.jpg', 2),
+(5, 'Tapes', 'Foals', 15, 'vinylCover/v14.jpg', 3),
+(6, 'Symbolic', 'Death', 13, 'vinylCover/v3.jpg', 5),
+(7, 'Show no mercy', 'Slayer', 15.9, 'vinylCover/v11.jpg', 4),
+(8, 'Fleet Foxes', 'Fleet Foxes', 11.4, 'vinylCover/v12.jpg', 5),
+(9, 'A Higher Place', 'Born of Osiris', 17.8, 'vinylCover/v7.jpg', 5),
+(10, 'Surfing the Void', 'Klaxon', 8.4, 'vinylCover/v9.jpg', 2);
