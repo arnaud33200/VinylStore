@@ -11,9 +11,12 @@ function getNote($n) {
 	}
 	return $str;
 }
+
+$cart = $_SESSION['PANIER_OBJ'];
+
 ?>
 
-<h1>Your basket contains 5 <span class="glyphicon glyphicon-cd"></span></h1>
+<h1>Your basket contains <?php echo count($cart); ?> <span class="glyphicon glyphicon-cd"></span></h1>
 <div class="panel panel-default">
   <div class="panel-body">
     <table class="table">
@@ -26,13 +29,12 @@ function getNote($n) {
     </thead>
 
 <?php
-
-	for ($i=0; $i<5; $i++) {
-		$cover = "VinylCover/v" . ($i+1) . ".jpg";
-		$artist = "Artist";
-		$album = "Album";
-		$note = getNote(3);
-		$price = 10.0;
+	foreach ($cart as $item) {
+		$cover = $item->image;
+		$artist = $item->artist;
+		$album = $item->title;
+		$note = getNote($item->note);
+		$price = $item->prix;
 		echo '<tr><td><img class="cover" src="' . $cover . '"/>
 		</td><td><p>' . $artist . '</p><p>' . $album . '</p><p>' . $note . '</p></td>
 		<td>' . $price . '$</td></tr>';

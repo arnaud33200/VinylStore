@@ -23,7 +23,14 @@
 <body>
 
 	<?php include 'navBar.php';
-	$count = 0;
+	if (isset($_SESSION['PANIER_OBJ'])){
+		$cart = $_SESSION['PANIER_OBJ'];
+		if ($cart == null) {
+			$count = 0;
+		} else {
+			$count = count($cart);
+		}
+	}	
 	if ($connected && $count > 0) {
 		echo '<div class="profile-section"><div class="profile-info-section">';
 		include 'basket/basketInformation.php';

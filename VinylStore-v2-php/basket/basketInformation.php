@@ -15,8 +15,11 @@ function updateInput() {
 </script>
 
 <?php
-
-$subPrice = 15;
+$cart = $_SESSION['PANIER_OBJ'];
+$subPrice = 0;
+foreach ($cart as $item) {
+	$subPrice += floatval($item->prix);
+}
 $deliveryPrice = 6.4;
 $totalPrice = $subPrice + $deliveryPrice;
 
