@@ -1,9 +1,4 @@
-<?php
-
-?>
-
 <script>
-
 function updateInput() {
 	var country = document.getElementById("destination").value;
 	var price = 0;
@@ -17,7 +12,15 @@ function updateInput() {
 	var t = sub+price;
 	document.getElementsByTagName("total")[0].innerHTML = "" + t;
 }
-</script>	
+</script>
+
+<?php
+
+$subPrice = 15;
+$deliveryPrice = 6.4;
+$totalPrice = $subPrice + $deliveryPrice;
+
+?>
 
 <div class="panel panel-primary">
 	<div id="debug"></div>
@@ -25,16 +28,16 @@ function updateInput() {
 	<div class="panel-body">
 		<ul class="list-group">
 			<li class="list-group-item">
-				<h3>Subtotal <subtotal>49.00</subtotal>$</h3>
+				<h3>Subtotal <subtotal><?php echo $subPrice; ?></subtotal>$</h3>
 				<p>Shipping to <select id="destination" onchange="updateInput()">
 					<option value="0">USA</option>
 					<option value="1">Canada</option>
 					<option value="2">Other Country</option>
 				</select></p>
-				<i><h5>+ <shippingprice>6.4</shippingprice>$ shipping</h5></i>
+				<i><h5>+ <shippingprice><?php echo $deliveryPrice; ?></shippingprice>$ shipping</h5></i>
 			</li>
 			<li class="list-group-item">
-				<b><h2>TOTAL <total>55.4</total>$</h2></b>
+				<b><h2>TOTAL <total><?php echo $totalPrice; ?></total>$</h2></b>
 			</li>
 		</ul>
 

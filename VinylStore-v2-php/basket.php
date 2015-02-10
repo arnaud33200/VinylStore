@@ -22,23 +22,24 @@
 
 <body>
 
-	<?php include 'navBar.php';?>
+	<?php include 'navBar.php';
+	$count = 0;
+	if ($connected && $count > 0) {
+		echo '<div class="profile-section"><div class="profile-info-section">';
+		include 'basket/basketInformation.php';
+		echo '</div><div class="profile-history-section" style="margin-right:400px;">';
+		include 'basket/basketHistory.php';
+		echo '</div></div>';
+	} 
+	else if ($connected && $count <= 0) {
+		echo '<div class="profile-section"><div class="alert alert-danger" role="alert">Your basket is empty</div>
+		<button type="button" class="btn btn-default" onClick="location.href=\'index.php\'"><h3>Continue Shopping<h3></button></div>';
+	} else {
+		echo '<div class="profile-section"><div class="alert alert-danger" role="alert">You must log-in to see your basket</div>
+		<button type="button" class="btn btn-default" onClick="location.href=\'index.php\'"><h3>Continue Shopping<h3></button></div>';
+	}
 
-
-	<div class="profile-section">
-
-		<div class="profile-info-section">
-
-			<?php include 'basket/basketInformation.php';?>
-		</div>
-
-		<div class="profile-history-section" style="margin-right:400px;">
-
-			<?php include 'basket/basketHistory.php';?>
-			
-		</div>
-
-	</div>
+	?>
 
 </body>
 
