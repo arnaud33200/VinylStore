@@ -3,6 +3,60 @@
 
 <script type="text/javascript">
 
+function ajaxRecordCart(id,artist, title, image, note, prix) {
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    else {
+        throw new Error("Ajax is not supported by this browser");
+    }
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) {
+              var r = xhr.responseText;
+
+            }
+        }
+    }
+    xhr.open('POST', 'basket/recordCart.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var d = "id="+id+"&artist="+artist+"&title="+title+"&image="+image+"&note="+note+"&prix="+prix;
+  xhr.send(d);
+}
+
+function ajaxRemoveCart(albumID) {
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    else {
+        throw new Error("Ajax is not supported by this browser");
+    }
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) {
+              var r = xhr.responseText;
+            }
+        }
+    }
+
+    xhr.open('POST', 'basket/removeCart.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var d = "albumID="+albumID;
+  xhr.send(d);
+}
+
 function changeCartColor(){
   document.getElementById('cart_icon').style.cssText = 'color: red;';
   document.getElementById('cart_item_number').style.cssText = 'background: red; color: white;';
@@ -15,6 +69,9 @@ function resetCartColor(){
 
 function removeItemFromCart(albumID){
   var myList = document.getElementById(albumID);
+
+  //ajaxRemoveCart(albumID);
+
   $('#'+albumID).remove();
   var cartItemNumber = document.getElementById('cart_item_number');
   var itemNumber = cartItemNumber.innerHTML;
@@ -26,6 +83,8 @@ function addItemToCart(artist, title, image, note, prix) {
   var count = $("#cart_item_list li").length;
   var albumid = "albumList"+count;
   var price = prix+"$"
+
+  ajaxRecordCart(albumid, artist, title, image, note, prix);
 
   cartList.innerHTML +='<li id=\''+albumid+'\' class="media">\
   <div class="media-left">\
@@ -46,6 +105,7 @@ function addItemToCart(artist, title, image, note, prix) {
   </button>\
   </div>\
   </li>';
+  
 
   var cartItemNumber = document.getElementById('cart_item_number');
   var itemNumber = cartItemNumber.innerHTML;
@@ -56,6 +116,8 @@ function addItemToCart(artist, title, image, note, prix) {
 
 
 </script>
+
+<?php include 'navBar.php';?>
 
 <head>
 
@@ -79,7 +141,7 @@ function addItemToCart(artist, title, image, note, prix) {
 
 <body>
 
-  <?php include 'navBar.php';?>
+  
 
   <div class="content-section">
 
