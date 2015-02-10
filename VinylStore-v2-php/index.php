@@ -5,55 +5,28 @@
 
 function ajaxRecordCart(id,artist, title, image, note, prix) {
 
-    var xhr;
-    if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-    }
-    else if (window.ActiveXObject) {
-        xhr = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    else {
-        throw new Error("Ajax is not supported by this browser");
-    }
-    
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status == 200 && xhr.status < 300) {
-              var r = xhr.responseText;
+  var xhr;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  }
+  else if (window.ActiveXObject) {
+    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+  }
+  else {
+    throw new Error("Ajax is not supported by this browser");
+  }
 
-            }
-        }
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status == 200 && xhr.status < 300) {
+        var r = xhr.responseText;
+
+      }
     }
-    xhr.open('POST', 'basket/recordCart.php');
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  }
+  xhr.open('POST', 'basket/recordCart.php');
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   var d = "id="+id+"&artist="+artist+"&title="+title+"&image="+image+"&note="+note+"&prix="+prix;
-  xhr.send(d);
-}
-
-function ajaxRemoveCart(albumID) {
-
-    var xhr;
-    if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-    }
-    else if (window.ActiveXObject) {
-        xhr = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    else {
-        throw new Error("Ajax is not supported by this browser");
-    }
-    
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status == 200 && xhr.status < 300) {
-              var r = xhr.responseText;
-            }
-        }
-    }
-
-    xhr.open('POST', 'basket/removeCart.php');
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  var d = "albumID="+albumID;
   xhr.send(d);
 }
 
@@ -67,17 +40,6 @@ function resetCartColor(){
   document.getElementById('cart_item_number').style.cssText = 'background: gray; color: white;';
 }
 
-function removeItemFromCart(albumID){
-  var myList = document.getElementById(albumID);
-
-  //ajaxRemoveCart(albumID);
-
-  $('#'+albumID).remove();
-  var cartItemNumber = document.getElementById('cart_item_number');
-  var itemNumber = cartItemNumber.innerHTML;
-  cartItemNumber.innerHTML = parseInt(itemNumber)-1;
-}
-
 function addItemToCart(artist, title, image, note, prix) {
   var cartList = document.getElementById('cart_item_list');
   var count = $("#cart_item_list li").length;
@@ -86,7 +48,7 @@ function addItemToCart(artist, title, image, note, prix) {
 
   ajaxRecordCart(albumid, artist, title, image, note, prix);
 
-  cartList.innerHTML +='<li id=\''+albumid+'\' class="media">\
+  cartList.innerHTML ='<li id=\''+albumid+'\' class="media">\
   <div class="media-left">\
   <a href="#">\
   <img class="media-object" src=\''+image+'\'alt="album0" style="width:50px; height:50px;">\
@@ -104,7 +66,7 @@ function addItemToCart(artist, title, image, note, prix) {
   </span>\
   </button>\
   </div>\
-  </li>';
+  </li>' + cartList.innerHTML;
   
 
   var cartItemNumber = document.getElementById('cart_item_number');
@@ -141,7 +103,7 @@ function addItemToCart(artist, title, image, note, prix) {
 
 <body>
 
-  
+
 
   <div class="content-section">
 
