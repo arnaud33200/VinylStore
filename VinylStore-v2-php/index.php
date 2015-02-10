@@ -3,6 +3,60 @@
 
 <script type="text/javascript">
 
+function ajaxRecordCart(id,artist, title, image, note, prix) {
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    else {
+        throw new Error("Ajax is not supported by this browser");
+    }
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) {
+              var r = xhr.responseText;
+
+            }
+        }
+    }
+    xhr.open('POST', 'basket/recordCart.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var d = "id="+id+"&artist="+artist+"&title="+title+"&image="+image+"&note="+note+"&prix="+prix;
+  xhr.send(d);
+}
+
+function ajaxRemoveCart(albumID) {
+
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    else {
+        throw new Error("Ajax is not supported by this browser");
+    }
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) {
+              var r = xhr.responseText;
+            }
+        }
+    }
+
+    xhr.open('POST', 'basket/removeCart.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var d = "albumID="+albumID;
+  xhr.send(d);
+}
+
 function changeCartColor(){
   document.getElementById('cart_icon').style.cssText = 'color: red;';
   document.getElementById('cart_item_number').style.cssText = 'background: red; color: white;';
@@ -15,20 +69,43 @@ function resetCartColor(){
 
 function removeItemFromCart(albumID){
   var myList = document.getElementById(albumID);
-  //myList.innerHTML = '';
+
+  //ajaxRemoveCart(albumID);
+
   $('#'+albumID).remove();
   var cartItemNumber = document.getElementById('cart_item_number');
   var itemNumber = cartItemNumber.innerHTML;
   cartItemNumber.innerHTML = parseInt(itemNumber)-1;
 }
 
-function addItemToCart(artist, title, image) {
-
+function addItemToCart(artist, title, image, note, prix) {
   var cartList = document.getElementById('cart_item_list');
   var count = $("#cart_item_list li").length;
   var albumid = "albumList"+count;
+  var price = prix+"$"
 
-  cartList.innerHTML +='<li id=\''+albumid+'\' class="media"><div class="media-left"><a href="#"><img class="media-object" src=\''+image+'\'alt="album0" style="width:50px; height:50px;"></a></div><div class="media-body"><h4 class="media-heading">'+artist+'</h4>'+title+'</div><div class="media-right"><h4 class="media-heading">10$</h4><button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="removeItemFromCart(\''+albumid +'\');"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div></li>';
+  ajaxRecordCart(albumid, artist, title, image, note, prix);
+
+  cartList.innerHTML +='<li id=\''+albumid+'\' class="media">\
+  <div class="media-left">\
+  <a href="#">\
+  <img class="media-object" src=\''+image+'\'alt="album0" style="width:50px; height:50px;">\
+  </a>\
+  </div>\
+  <div class="media-body">\
+  <h4 class="media-heading">'+artist+'</h4>'+title+'\
+  </div>\
+  <div class="media-right">\
+  <h4 class="media-heading">\
+  '+price+'\
+  </h4>\
+  <button class="button_cart" type="button" class="btn btn-default" aria-label="Left Align" onclick="removeItemFromCart(\''+albumid +'\');">\
+  <span class="glyphicon glyphicon-remove" aria-hidden="true">\
+  </span>\
+  </button>\
+  </div>\
+  </li>';
+  
 
   var cartItemNumber = document.getElementById('cart_item_number');
   var itemNumber = cartItemNumber.innerHTML;
@@ -37,7 +114,10 @@ function addItemToCart(artist, title, image) {
   setTimeout(resetCartColor,1000);
 }
 
+
 </script>
+
+<?php include 'navBar.php';?>
 
 <head>
 
@@ -61,8 +141,7 @@ function addItemToCart(artist, title, image) {
 
 <body>
 
-  <?php include 'navBar.php';?>
-
+  
 
   <div class="content-section">
 
@@ -123,7 +202,8 @@ function addItemToCart(artist, title, image) {
         <h5 id=".$albumTitleId.">".$row["Titre"]."</h5>
         <p>";
 
-
+        $albumNote = $row["Note"];
+        $albumPrix = $row["Prix"];
         $i = 1;
         for ($i; $i <= $row["Note"]; $i++) {
           $album = $album . "<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>";
@@ -133,10 +213,8 @@ function addItemToCart(artist, title, image) {
           $album = $album . "<span class=\"glyphicon glyphicon-star-empty\" aria-hidden=\"true\"></span>";
         }
 
-
-
-        $album = $album . "<button class=\"button_cart\" type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\" onclick=\"addItemToCart(getElementById('{$albumArtistId}').innerHTML,getElementById('{$albumTitleId}').innerHTML,getElementById('{$albumImageId}').src)\">
-        10$
+        $album = $album . "<button class=\"button_cart\" type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\" onclick=\"addItemToCart(getElementById('{$albumArtistId}').innerHTML,getElementById('{$albumTitleId}').innerHTML,getElementById('{$albumImageId}').src,$albumNote,$albumPrix)\">
+        ".$row["Prix"]."$
         <span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"></span>
         </button>
         </p>

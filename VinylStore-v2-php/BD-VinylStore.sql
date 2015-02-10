@@ -29,5 +29,7 @@ CREATE TABLE IF NOT EXISTS `vinyle` (
 INSERT INTO `vinyle` (`Id`, `Titre`, `Artiste`, `Prix`, `Pochette`, `Note`) VALUES
 (1, 'Holy Fire', 'Foals', 20, 'http://upload.wikimedia.org/wikipedia/en/3/32/Holy_Fire_II.jpg', 3),
 (2, 'Total Life Forever', 'Foals', 20, 'http://andrewmcmillen.com/wp-content/uploads/2010/05/foals_album_cover.jpg', 4),
-(3, 'Antidotes', 'Foals', 20, 'http://2.bp.blogspot.com/-bTU5SQCa5RY/Tym-qt1W9NI/AAAAAAAAANo/nWcGHN0c9NY/s1600/Indie+album+covers.jpg', 5);
+(3, 'Antidotes', 'Foals', 20, 'http://2.bp.blogspot.com/-bTU5SQCa5RY/Tym-qt1W9NI/AAAAAAAAANo/nWcGHN0c9NY/s1600/Indie+album+covers.jpg', 5),
+(4, 'My Number', 'Foals', 10, 'http://payload117.cargocollective.com/1/0/5464/4640626/FOALS-MYNUMBER-LEIFPODHAJSKY-34_800.jpg', 2),
+(5, 'Tales', 'Foals', 15, 'http://nme.assets.ipccdn.co.uk/images/gallery/FoalsTapes600Gb.jpg', 3);
 
