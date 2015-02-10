@@ -10,6 +10,7 @@ function loadPesonalInformation(mail, adress, code, ville) {
 }
 
 function loadFormulaire() {
+	document.getElementById("personalInformation").removeEventListener("click", loadFormulaire);
 	var d = document.getElementById("personalInformation");
 	d.onclick = null;
 	var mail = document.getElementsByTagName("mail")[0].innerHTML;
@@ -53,27 +54,7 @@ function saveChange() {
 	var codep = document.getElementsByTagName("codep")[0].getElementsByTagName("input")[0].value;
 	var ville = document.getElementsByTagName("ville")[0].getElementsByTagName("input")[0].value;
 
-	//d.attachEvent("onlick", loadFormulaire());
-
-	/*if (mail == "") {
-		spanMail.style.backgroundColor="#ea5959";
-		return;
-	}
-	if (adresse == "") {
-		spanAdresse.style.backgroundColor="#ea5959";
-		return;
-	}
-	if (codep == "") {
-		spanCodep.style.backgroundColor="#ea5959";
-		return;
-	}
-	if (ville == "") {
-		spanVille.style.backgroundColor="#ea5959";
-		return;
-	}*/
-
 	ajaxRecordDB(mail, adresse, codep, ville);
-	//d.bind( "click", loadFormulaire	 );
 }
 
 function ajaxRecordDB(mail, adresse, codep, ville) {
@@ -93,9 +74,9 @@ function ajaxRecordDB(mail, adresse, codep, ville) {
         if (xhr.readyState === 4) {
             if (xhr.status == 200 && xhr.status < 300) {
             	var obj = JSON.parse(xhr.responseText);
-                //document.getElementById('divConsole').innerHTML = xhr.responseText;
                 if (obj.error == 0) {
                 	loadPesonalInformation(mail, adresse, codep, ville);
+                	document.getElementById("personalInformation").addEventListener("click", loadFormulaire);
                 } else {
                 	setInputTextError(obj);
                 }
